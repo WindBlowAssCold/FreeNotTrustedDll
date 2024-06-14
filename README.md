@@ -24,6 +24,6 @@ Kasper -- a loader with dll hijack.
 
 ## Further
 
-The stack of the thread we create to run our shellcode is looks wired.
+The stack of the thread we create to run our shellcode looks wired.
 I will try to improve this using SilentMoonwalk.\
 [https://github.com/klezVirus/SilentMoonwalk]
