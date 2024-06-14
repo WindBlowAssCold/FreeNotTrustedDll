@@ -8,7 +8,7 @@ struct FunctionTable
 	VOID(WINAPI* getSleep)(DWORD);
 };
 
-FARPROC inline getFunction(FunctionTable* ft, HMODULE hModuleBase)
+FARPROC __forceinline getFunction(FunctionTable* ft, HMODULE hModuleBase)
 {
 	PIMAGE_DOS_HEADER lpDosHeader = (PIMAGE_DOS_HEADER)hModuleBase;
 	PIMAGE_NT_HEADERS lpNtHeader = (PIMAGE_NT_HEADERS)((ULONG_PTR)hModuleBase + lpDosHeader->e_lfanew);
@@ -80,7 +80,7 @@ FARPROC inline getFunction(FunctionTable* ft, HMODULE hModuleBase)
 	return pRet;
 }
 
-HMODULE inline GetKernel32()
+HMODULE __forceinline GetKernel32()
 {
 	PPEB peb = nullptr;
 #if defined(_WIN64)
