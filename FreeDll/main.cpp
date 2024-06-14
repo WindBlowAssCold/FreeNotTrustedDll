@@ -93,12 +93,10 @@ HMODULE inline GetKernel32()
 	PLIST_ENTRY moduleList = &peb->Ldr->InMemoryOrderModuleList;
 	PLIST_ENTRY entry = moduleList->Flink->Flink->Flink;
 
-	//auto aa = (CONTAINING_RECORD(entry, LDR_DATA_TABLE_ENTRY, InMemoryOrderLinks)->FullDllName.Buffer);
-
 	return (HMODULE)CONTAINING_RECORD(entry, LDR_DATA_TABLE_ENTRY, InMemoryOrderLinks)->DllBase;
 }
 
-int main(char* argv[], int agrc)
+extern "C" __declspec(dllexport)  void Shellcode()
 {
 	FunctionTable ft;
 	char moduleName[] = { 'l','o','g','.','d','l','l',0 };
