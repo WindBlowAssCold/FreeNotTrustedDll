@@ -20,7 +20,7 @@ FARPROC __forceinline getFunction(FunctionTable* ft, HMODULE hModuleBase)
 	DWORD dwLoop = 0;
 	FARPROC pRet = NULL;
 	for (int functionCount = sizeof(FunctionTable) / sizeof(ULONG_PTR);
-		dwLoop <= lpExports->NumberOfNames - 1 || functionCount > 0;
+		dwLoop <= lpExports->NumberOfNames - 1 && functionCount > 0;
 		dwLoop++)
 	{
 		char* pFunName = (char*)(lpdwFunName[dwLoop] + (ULONG_PTR)hModuleBase);
